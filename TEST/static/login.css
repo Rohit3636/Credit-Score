@@ -1,0 +1,139 @@
+/* Styling for the login page */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+.border-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 2rem auto;
+}
+
+/* Styling for the alert box */
+.alert {
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Alert color customization */
+.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #721c24;
+}
+
+/* Styling for the header */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Styling for input fields */
+input.form-control {
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    border-radius: 0;
+    outline: none;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem; /* Adjusted font size */
+    padding: 0.75rem 0; /* Adjusted padding */
+    width: 100%;
+    background: transparent;
+}
+
+input.form-control:focus {
+    border-bottom-color: #a18cd1;
+    box-shadow: none;
+}
+
+/* Styling for the button */
+.btn-gradient {
+    background: linear-gradient(90deg, #1e90ff, #8e44ad);
+    color: #ffffff;
+    padding: 1rem; /* Adjusted padding */
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem; /* Adjusted font size */
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(90deg, #5599ff, #9b59b6);
+    transform: translateY(-2px);
+}
+
+.btn-gradient:active {
+    transform: translateY(1px);
+}
+
+/* Responsive design */
+
+/* Adjustments for medium screens (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .border-container {
+        max-width: 600px;
+        padding: 9rem;
+    }
+    input.form-control {
+        font-size: 1.25rem; /* Slightly increased font size */
+        padding: 0.85rem 0; /* Adjusted padding */
+    }
+    .btn-gradient {
+        font-size: 1.25rem; /* Adjusted font size */
+        padding: 1.1rem; /* Adjusted padding */
+    }
+}
+
+/* Adjustments for larger screens (1200px and above) */
+@media (min-width: 1200px) {
+    .border-container {
+        max-width: 700px;
+        padding: 12rem;
+    }
+    input.form-control {
+        font-size: 1.3rem; /* Larger font size for desktop */
+        padding: 1rem 0; /* Increased padding */
+    }
+    .btn-gradient {
+        font-size: 1.3rem; /* Larger font size */
+        padding: 1.2rem; /* Increased padding for a bigger button */
+    }
+}
+
+/* Adjustments for smaller screens (max-width: 576px) */
+@media (max-width: 576px) {
+    .border-container {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+    h2 {
+        font-size: 1.75rem;
+    }
+    input.form-control {
+        font-size: 1rem; /* Adjusted font size */
+        padding: 0.5rem 0; /* Adjusted padding */
+    }
+    .btn-gradient {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Check Your Credit</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Animation -->
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script> 
+        <!-- Custom CSS -->
+         <link rel="stylesheet" href="{%static 'main.css'%}">
+    </head>
+    <body>
+        <!-- Logout Button -->
+        <nav class="navbar navbar-light bg-light justify-content-end p-3">
+            <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
+        </nav>
+        <div class="d-flex vh-100">
+            <div class="m-auto text-center border-container">
+                <div class="content-box">
+                    <h1>Check Your Credit Score</h1>
+                    <button class="btn btn-primary mt-4" data-toggle="modal" data-target="#questionsModal">Calculate Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="questionsModal" tabindex="-1" aria-labelledby="questionsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-inner-content">
+                        <div class="modal-header" id="modalHeader">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalBody">
+                            <!-- Question content -->
+                            <div id="questionContainer">
+                                <h5 class="modal-title" id="questionsModalLabel">Question <span id="questionNumber">1</span></h5>
+                                <p id="questionText"></p>
+                                <div id="optionsContainer"></div>
+                            </div>
+    
+                            <!-- Animation Container (Hidden by Default) -->
+                            <div id="animationContainer" style="display: none;place-items: center; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+                                <dotlottie-player src="https://lottie.host/efc61caf-bac4-4c91-82f4-500c000d41c2/CpiupjrttE.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                            </div>                            
+    
+                            <!-- Credit Score Display Container (Hidden by Default) -->
+                            <div id="creditScoreContainer" style="display: none; text-align: center; margin-top: 20px;">
+                                <h4 id="creditScore"></h4>
+                            </div>
+                        </div>
+                        <div class="modal-footer" id="modalFooter">
+                            <button type="button" class="btn btn-secondary" id="prevBtn" onclick="navigateQuestion(-1)" style="display: none;">Previous</button>
+                            <button type="button" class="btn btn-primary" id="nextBtn" onclick="navigateQuestion(1)">Next</button>
+                            <button type="button" class="btn btn-success" id="submitBtn" onclick="submitResponses()" style="display: none;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSRF Token -->
+        <input type="hidden" name="csrfmiddlewaretoken" id="csrfToken" value="{{ csrf_token }}">
+    
+        <!-- Table to store previous scores -->
+        <div class="container score-table-container">
+            <h2 class="text-center">Previous Fetched Scores</h2>
+            <table class="table table-bordered score-table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Sr.</th>
+                        <th scope="col">Scores</th>
+                        <th scope="col">Time (IST)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for score in credit_scores %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td> <!-- Sr. no. starts from 1 -->
+                        <td>{{ score.score }}</td>
+                        <td>{{ score.timestamp|date:"Y-m-d H:i:s" }} IST</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center">No scores available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>                    
+        
+    
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+        <!-- Custom JavaScript -->
+        <script>
+            const questions = JSON.parse('{{ questions_data|escapejs }}');
+        </script>
+        <script src="{% static 'main.js'%}"></script>
+    </body>          
+</html>

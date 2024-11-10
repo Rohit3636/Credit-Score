@@ -1,0 +1,129 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+.border-container {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    border-radius: 15px;
+    padding: 5px;
+    margin: 20px;
+}
+.content-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+}
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.btn-primary {
+    width: 200px;
+    height: 50px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+}
+
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 1rem); /* Center vertically */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.modal-lg {
+    max-width: 70%;
+}
+.modal-content {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    border-radius: 15px;
+    padding: 5px;
+}
+.modal-inner-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+}
+.form-check-input {
+    display: none;
+}
+.form-check-label {
+    display: block;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.form-check-input:checked + .form-check-label {
+    background-color: #fbc2eb;
+    border-color: #a18cd1;
+    font-weight: 600;
+}
+.form-check-input:hover + .form-check-label {
+    border-color: #fad0c4;
+}
+.btn-success {
+    background-color: #6a11cb;
+    border-color: #6a11cb;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+.btn-success:hover {
+    background-color: #8e44ad;
+    border-color: #8e44ad;
+}
+.score-table {
+    margin-top: 40px;
+}
+.score-table th, .score-table td {
+    text-align: center;
+}
+
+.navbar {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
+}
+
+.navbar .btn-outline-danger {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .btn-outline-danger:hover {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .btn-primary {
+        width: 150px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    .modal-lg {
+        max-width: 90%;
+    }
+    .modal-dialog {
+        max-width: 90%; /* Ensure it fits within the screen */
+        margin: 0 auto;
+    }
+    
+    .modal-content {
+        padding: 5px;
+    }
+}
+
+
+
